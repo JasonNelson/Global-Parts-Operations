@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-3 col-md-offset-0">
+    <%= link_to 'Create New Account', new_customer_account_path, class: "btn btn-success" %>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    <h1>All Customer Accounts</h1>
+  </div>
+  <div class="col-md-4 col-md-offset-0">
+   <%= will_paginate %> 
+  </div>
+</div>
+
+
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>First Name</th>
+      <th>M.I.</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th>Email</th>
+      <th>Home phone</th>
+      <th>Cell phone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_accounts.each do |customer_account| %>
+      <tr>
+        <td><%= customer_account.id %></td>
+        <td><%= customer_account.fname %></td>
+        <td><%= customer_account.middle_initial %></td>
+        <td><%= customer_account.lname %></td>
+        <td><%= customer_account.street_add %></td>
+        <td><%= customer_account.city %></td>
+        <td><%= customer_account.state %></td>
+        <td><%= customer_account.zipcode %></td>
+        <td><%= customer_account.email %></td>
+        <td><%= customer_account.home_phone %></td>
+        <td><%= customer_account.cell_phone %></td>
+          <div class="btn-group-xs">
+            <td><%= link_to 'Show', customer_account, class: "btn btn-primary" %></td>
+            <td><%= link_to 'Edit', edit_customer_account_path(customer_account), class: "btn btn-primary" %></td>
+            <td><%= link_to 'Destroy', customer_account, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+          </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
+</div>
+

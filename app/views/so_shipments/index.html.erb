@@ -1,0 +1,100 @@
+<h1>Sales Orders Ready to be Shipped</h1>
+
+<table class="table table-striped table-condensed" >
+  <thead>
+    <tr>
+      <th>Sales Order ID</th>
+      <th>Customer account</th>
+      <th>Placed On</th>
+      <th>Order line</th>
+      <th>Order status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders = SalesOrder.where(:order_status_id => 4).limit(8) %>
+    
+    <% @orders.each do |so| %>  
+      <tr>
+        <td><%= so.id %></td>
+        <td><%= so.customer_account_id %></td>
+        <td><%= so.created_at %></td>
+        <td><%= so.order_status_id %></td>
+        <% x = so.order_status_id; puts x %>
+        <td><%= so.order_status_id %></td>  
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+
+<br>
+
+<h3 style="text-align: center; ">Please select an order to ship</h3>
+
+<% form_tag :controller => 'so_shipments', :action => 'index', :method => 'GET' do |f|%>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 pad-10"> 
+      <% options = options_from_collection_for_select(SalesOrder.where(:order_status_id => 4), 'id', 'id') %>
+      <%= f.select :sales_order_id, options, :input_html => { class: "form-control" } %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= f.submit "Generate Pick List", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+  
+
+
+<br>
+
+<%= link_to 'Back', new_so_shipment_path %>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing So Shipments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sales order</th>
+      <th>Customer account</th>
+      <th>Ship date</th>
+      <th>Ship time</th>
+      <th>Expected delivery date</th>
+      <th>Carrier</th>
+      <th>Method</th>
+      <th>Tracking num</th>
+      <th>Shipped by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @so_shipments.each do |so_shipment| %>
+      <tr>
+        <td><%= so_shipment.sales_order %></td>
+        <td><%= so_shipment.customer_account %></td>
+        <td><%= so_shipment.ship_date %></td>
+        <td><%= so_shipment.ship_time %></td>
+        <td><%= so_shipment.expected_delivery_date %></td>
+        <td><%= so_shipment.carrier %></td>
+        <td><%= so_shipment.method %></td>
+        <td><%= so_shipment.tracking_num %></td>
+        <td><%= so_shipment.shipped_by %></td>
+        <td><%= link_to 'Show', so_shipment %></td>
+        <td><%= link_to 'Edit', edit_so_shipment_path(so_shipment) %></td>
+        <td><%= link_to 'Destroy', so_shipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New So shipment', new_so_shipment_path %>

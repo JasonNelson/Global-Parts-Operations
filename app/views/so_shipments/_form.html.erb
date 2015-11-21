@@ -1,0 +1,94 @@
+<%= form_for(@so_shipment) do |f| %>
+  <% if @so_shipment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@so_shipment.errors.count, "error") %> prohibited this so_shipment from being saved:</h2>
+
+      <ul>
+      <% @so_shipment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+      <div class="form-group">
+        <%= f.label :sales_order_id, "Sales Order to Ship" %>
+        <% options = options_from_collection_for_select(SalesOrder.where(:order_status_id => 4), 'id', 'id') %>
+        <%= f.select( :sales_order_id, options_for_select(options), {}, {class: "form-control"}) %>
+      </div>
+    </div>
+    <div class="col-md-4 col-md-offset-0">
+        <%= f.label :tracking_num, "Tracking# *" %>
+        <%= f.text_field :tracking_num, class: 'form-control', placeholder: "eg, 1234567890" %>
+    </div>
+    <div class="col-md-2 col-md-offset-0">* required field
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="col-md-2 col-md-offset-2">   
+      <div class="form-group">
+        <%= f.label :carrier, "Carrier" %>
+        <%= f.select :carrier, options_for_select(["USPS", "FedEx", "UPS"]), {}, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-offset-0">
+      <div class="form-group">
+        <%= f.label :method, "Method" %>
+        <%= f.select :method, options_for_select(["Ground", "Air"]), {}, {class: "form-control"} %>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-offset-0">
+        <%= f.label :shipped_by, "Shipped by (employee number)*" %>
+        <%= f.text_field :shipped_by, class: 'form-control', placeholder: "eg, 12345" %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+        <%= f.submit "Cancel", class: "btn btn-danger" %>
+    </div>
+    <div class="col-md-4 col-md-offset-0">
+        <button type="button" id="submitBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Record Shipment</button>
+    </div>
+  </div>
+       
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Does everything look right?</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+              <strong>Sales order ID:</strong>
+              <span id="sales_order_id"></span>
+            </p>
+
+            <p>
+              <strong>Carrier and method:</strong>
+              <span id="carrier"></span> <span id="method"></span>
+            </p>
+
+            <p>
+              <strong>Tracking #:</strong>
+              <span id="tracking_num"</span>
+            </p>
+
+            <p>
+              <strong>Shipped by employee#:</strong>
+              <span id="shipped_by"</span>
+            </p>
+        </div>
+        <div class="modal-footer" style="border: none">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button class="btn btn-success">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,121 @@
+<p id="notice"><%= notice %></p>
+
+<h6>Shipping to:</h6>
+
+<div class="row">
+   <div class="col-md-8 col-md-offset-0">
+      <%= @customer.first.fname + ' ' + @customer.first.middle_initial + ' ' + @customer.first.lname %>
+   </div>
+   <div class="col-md-2 col-md-offset-0 text-right">
+      Sales order#:
+   </div>
+   <div class="col-md-2 col-md-offset-0 text-left">
+      <%= @so_shipment.sales_order.id %>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-md-8 col-md-offset-0">
+      <%= @order.first.shipping_street_address %>
+   </div>   
+   <div class="col-md-2 col-md-offset-0 text-right">
+     Shipped on:
+   </div>
+   <div class="col-md-2 col-md-offset-0 text-left">
+     <%= @so_shipment.created_at.to_s[0..9] %>
+   </div>
+</div>
+
+<div class="row">
+   <div class="col-md-8 col-md-offset-0">
+      <%= @order.first.shipping_city + ', ' + @states_hash[@order.first.shipping_state] + ' ' + @order.first.shipping_zipcode %>
+   </div>
+   <div class="col-md-2 col-md-offset-0 text-right">
+      Ordered on:
+   </div>
+   <div class="col-md-2 col-md-offset-0 text-left">
+      <%= @order.first.created_at.to_s[0..9] %>
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-2 col-md-offset-8 text-right">
+      Shipped by employee #:
+   </div>
+   <div class="col-md-2 col-md-offset-0 text-left">
+      <%= @so_shipment.shipped_by %>
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-2 col-md-offset-8 text-right">
+      Carrier and method:
+   </div>
+   <div class="col-md-2 col-md-offset-0 text-left">
+      <%= @so_shipment.carrier %> <%= @so_shipment.method %>
+   </div>
+</div>
+<br>
+<br>
+<div class="row" style="font-size: 2em">Tracking #: <%= @so_shipment.tracking_num %></div>
+<br>
+<br>
+<div class="row">
+<table class="table table-striped table-condensed" >
+  <thead>
+    <tr>
+      <th>Product Number</th> <!-- same as bar code -->
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Unit Price</th>
+      <th>Total Price</th>      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subtotal = 0 %>
+    <% @itemlines = OrderLine.where(:sales_order_id => @so_shipment.sales_order.id) %>
+    <% @itemlines.each do |line| %>
+      <% @item = InventoryItem.where(:id => line.inventory_item_id) %>
+      <% @subtotal += (@item.first.selling_price * line.qty_ordered) %>
+      <tr>
+        <td><%= @item.first.barcode %></td>
+        <td><%= @item.first.product_name %></td>
+        <td><%= line.qty_ordered.to_s + ' ' + @item.first.unit_of_measure.pluralize(line.qty_ordered) %></td>                
+        <td><%= @item.first.selling_price %></td>
+        <td><%= (@item.first.selling_price * line.qty_ordered) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+</div>
+<div class="row">
+   <div class="col-md-2 col-md-offset-8 text-right">Subtotal:</div><div class="col-md-2 col-md-offset-0"><%= number_to_currency(@subtotal) %></div>
+</div>
+<div class="row">
+   <div class="col-md-2 col-md-offset-8 text-right">(<%= @order.first.tax_percent %>%) Sales tax:</div><div class="col-md-2 col-md-offset-0"><%= number_to_currency((@order.first.tax_percent / 100.0) * @subtotal) %></div>
+</div>
+<div class="row">
+   <div class="col-md-2 col-md-offset-8 text-right">Grand total:</div><div class="col-md-2 col-md-offset-0"><%= number_to_currency(((@order.first.tax_percent / 100.0) + 1) * @subtotal) %></div>
+</div>
+
+<div class="row">
+</div>
+
+<br><br><br>
+
+<div class="row">
+   <div class="col-md-3 col-md-offset-0">
+      <%= link_to 'Edit shipment information', edit_so_shipment_path(@so_shipment), class: "btn btn-info" %>
+   </div>
+   <div class="col-md-4 col-md-offset-5 text-right">
+      <div class='btn-group'>
+         <%= link_to 'Record another shipment', new_so_shipment_path, class: "btn btn-info" %>
+         <%= link_to 'Home', root_path, class: "btn btn-success" %>
+      </div>
+   </div>
+</div>
+
+<% if false %>
+   <%= link_to 'Edit', edit_so_shipment_path(@so_shipment) %> |
+   <%= link_to 'Back', new_so_shipment_path %>
+<% end %>

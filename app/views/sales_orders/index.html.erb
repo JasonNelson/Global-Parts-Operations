@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-3 col-md-offset-0">
+    <%= link_to 'Create New Sales Order', new_sales_order_path, class: "btn btn-success" %>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    <h1>All Sales Orders</h1>
+  </div>
+  <div class="col-md-4 col-md-offset-0">  
+    <%= will_paginate %>
+  </div>
+</div>
+
+<table class="table table-striped table-condensed" >
+  <thead>
+    <tr>
+      <th>Sales Order ID</th>
+      <th>Billing address</th>
+      <th>Billing city</th>
+      <th>Billing state</th>
+      <th>Billing zipcode</th>
+      <th>Shipping address</th>
+      <th>Shipping city</th>
+      <th>Shipping state</th>
+      <th>Shipping zipcode</th>
+      <th>CC First</th>
+      <th>CC MI</th>
+      <th>CC Last</th>
+      <th>CC#</th>
+      <th>CC code</th>
+      <th>CC month</th>
+      <th>CC year</th>
+      <th>Subtotal</th>
+      <th>Tax%</th>
+      <th>Shipping fee</th>
+      <th>Total</th>
+      <th>Customer account</th>
+      <th>Order line</th>
+      <th>Order status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @sales_orders.each do |sales_order| %>
+      <tr>
+        <td><%= sales_order.id %></td>
+        <td><%= sales_order.billing_street_add %></td>
+        <td><%= sales_order.billing_city %></td>
+        <td><%= sales_order.billing_state %></td>
+        <td><%= sales_order.billing_zipcode %></td>
+        <td><%= sales_order.shipping_street_address %></td>
+        <td><%= sales_order.shipping_city %></td>
+        <td><%= sales_order.shipping_state %></td>
+        <td><%= sales_order.shipping_zipcode %></td>
+        <td><%= sales_order.cc_fname %></td>
+        <td><%= sales_order.cc_middle_initial %></td>
+        <td><%= sales_order.cc_lname %></td>
+        <td><%= sales_order.cc_number %></td>
+        <td><%= sales_order.cc_security_code %></td>
+        <td><%= sales_order.cc_exp_month %></td>
+        <td><%= sales_order.cc_exp_year %></td>
+        <td><%= sales_order.subtotal %></td>
+        <td><%= sales_order.tax_percent %></td>
+        <td><%= sales_order.shipping_fee %></td>
+        <td><%= sales_order.total %></td>
+        <td><%= sales_order.customer_account_id %></td>
+        <td><%= sales_order.order_line_id %></td>
+        <td><%= sales_order.order_status_id %></td>
+        <div class="btn-group-xs">
+          <td><%= link_to 'Show', sales_order, class: "btn btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_sales_order_path(sales_order), class: "btn btn-primary" %></td>
+          <td><%= link_to 'Destroy', @sales_order, method: :destroy, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>

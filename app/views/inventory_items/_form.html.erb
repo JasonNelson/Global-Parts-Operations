@@ -1,0 +1,49 @@
+<%= form_for(@inventory_item) do |f| %>
+  <% if @inventory_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inventory_item.errors.count, "error") %> prohibited this inventory_item from being saved:</h2>
+
+      <ul>
+      <% @inventory_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :barcode %><br>
+    <%= f.number_field :barcode %>
+  </div>
+  <div class="field">
+    <%= f.label :product_name %><br>
+    <%= f.text_field :product_name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :selling_price %><br>
+    <%= f.text_field :selling_price %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_of_measure %><br>
+    <%= f.text_field :unit_of_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :qty_on_hand %><br>
+    <%= f.number_field :qty_on_hand %>
+  </div>
+  <div class="field">
+    <%= f.label :location_aisle %><br>
+    <%= f.number_field :location_aisle %>
+  </div>
+  <div class="field">
+    <%= f.label :location_area %><br>
+    <%= f.text_field :location_area %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

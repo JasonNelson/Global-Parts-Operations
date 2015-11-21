@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+<br><br><br>
+<div class="row">
+   <div class="col-md-4 col-md-offset-0" style="border: 1px solid black; border-radius: 9px; ">
+      <p>
+        <strong>Name:</strong>
+        <%= @customer_account.fname + ' ' + @customer_account.middle_initial + ' ' + @customer_account.lname %>
+      </p>
+
+      <p>
+        <strong>Address:</strong>
+        <%= @customer_account.street_add + ', ' + @customer_account.city + ', ' + @customer_account.state + ' ' + @customer_account.zipcode %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @customer_account.email %>
+      </p>
+
+      <p>
+        <strong>Home phone:</strong>
+        <%= @customer_account.home_phone %>
+      </p>
+
+      <p>
+        <strong>Cell phone:</strong>
+        <%= @customer_account.cell_phone %>
+      </p>
+
+      <p>
+        <strong>Phone preference:</strong>
+        <%= @customer_account.phone_pref %>
+      </p>
+
+      <p>
+         <%= link_to 'Edit your information', edit_customer_account_path(@customer_account), class: "btn btn-info" %>
+      </p>
+   </div>
+
+   <div class="col-md-8 col-md-offset-0">
+      <br><br>
+      <p style="font-size: 2em; ">Would you like to place an order today?</p>
+      <br><br>
+      <div class="col-md-4 col-md-offset-0">
+         <%= link_to "No, thank you", root_path, class: "btn btn-danger btn-block" %>
+      </div>
+      <div class="col-md-4 col-md-offset-0">
+         <%= link_to "yes", new_sales_order_path(@customer_account), class: "btn btn-success btn-block" %>
+      </div>
+   </div>
+</div>
+
+<div class="row">
+</div>
+
+<% if false %>
+<%= link_to 'Edit', edit_customer_account_path(@customer_account) %> |
+<%= link_to 'Back', root_path %>
+<% end %>

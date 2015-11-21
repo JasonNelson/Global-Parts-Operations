@@ -1,0 +1,320 @@
+<%= form_for(@sales_order) do |f| %>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= render 'shared/error_messages', object: f.object %>
+    </div>
+  </div>
+
+  <h6>Shipping Address</h6>
+
+  <div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <%= f.label :shipping_street_address, "Street Address*" %>
+        <%= f.text_field :shipping_street_address, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :shipping_city, "City*" %>
+        <%= f.text_field :shipping_city, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+        <div class="form-group">
+          <%= f.label :shipping_state, "State*" %>
+          <%= f.select(:shipping_state, options_for_select(["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District Of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]), {}, {class: "form-control"}) %>
+        </div>
+    </div>
+    <div class="col-md-2 col-md-offset-0">
+        <%= f.label :shipping_zipcode, "Zip Code*" %>
+        <%= f.text_field :shipping_zipcode, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-0">
+      <hr>
+    </div>
+  </div>
+
+  <h6>Billing Address</h6>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <%= f.label :billing_street_add, "Street Address*" %>
+        <%= f.text_field :billing_street_add, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 col-md-offset-0">* required field
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :billing_city, "City*" %>
+        <%= f.text_field :billing_city, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+        <div class="form-group">
+          <%= f.label :billing_state, "State*" %>
+          <%= f.select(:billing_state, options_for_select(["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District Of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]), {}, {class: "form-control"}) %>
+        </div>
+    </div>
+    <div class="col-md-2 col-md-offset-0">
+        <%= f.label :billing_zipcode, "Zip Code*" %>
+        <%= f.text_field :billing_zipcode, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-0">
+      <hr>
+    </div>
+  </div>
+
+  <h6>Credit Card Information</h6>
+  
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :cc_fname, "First Name*" %>
+        <%= f.text_field :cc_fname, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 col-sm-offset-0">
+        <%= f.label :cc_middle_initial, "Middle Initial" %>
+        <%= f.text_field :cc_middle_initial, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+        <%= f.label :cc_lname, "Last Name*" %>
+        <%= f.text_field :cc_lname, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :cc_number, "Credit Card Number*" %>
+        <%= f.text_field :cc_number, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 col-sm-offset-0">
+        <%= f.label :cc_security_code, "Security Code*" %>
+        <%= f.text_field :cc_security_code, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 col-md-offset-0">
+      <div class="form-group">
+        <%= f.label :cc_exp_month, "Exp Mth*" %>
+        <%= f.select(:cc_exp_month, options_for_select(["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]), {}, {class: "form-control"}) %>
+      </div>
+    </div>
+    <div class="col-md-1 col-md-offset-0">
+      <div class="form-group">
+        <%= f.label :cc_exp_year, "Exp Yr*" %>
+        <%= f.select(:cc_exp_year, options_for_select(["15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"]), {}, {class: "form-control"}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-0">
+      <hr>
+    </div>
+  </div>
+
+  <h6>Order Details</h6>
+
+<div class="row">
+   <div class="col-md-6 col-md-offset-2">
+      <div class="control-group">      
+         <select id="order_line_id" class="form-control" placeholder="Select an item...">
+            <option value="">Select an item...</option>
+            <option value="1">1  Awesome Cotton Shoes $88.23   box</option>
+            <option value="2">2  Sleek Cotton Chair   $88.22   box</option>
+            <option value="3">3  Small Concrete Shoes $58.87   box</option>
+            <option value="4">4  Practical Concrete Shirt   $39.41   box</option>
+            <option value="5">5  Small Rubber Hat  $66.67   box</option>
+            <option value="6">6  Small Wooden Shirt   $44.01   box</option>
+            <option value="7">7  Awesome Steel Gloves $5.92 box</option>
+            <option value="8">8  Sleek Granite Shoes  $2.43 box</option>
+            <option value="9">9  Sleek Plastic Car $65.11   box</option>
+            <option value="10">10   Practical Granite Table $92.23   box</option>
+            <option value="11">11   Practical Concrete Gloves  $57.34   box</option>
+            <option value="12">12   Practical Rubber Shirt  $33.57   box</option>
+            <option value="13">13   Incredible Concrete Computer  $68.15   box</option>
+            <option value="14">14   Sleek Granite Pants  $96.37   box</option>
+            <option value="15">15   Ergonomic Steel Shoes   $77.16   box</option>
+            <option value="16">16   Small Rubber Shirt   $73.04   box</option>
+            <option value="17">17   Incredible Wooden Computer $93.58   box</option>
+            <option value="18">18   Small Rubber Shoes   $59.47   box</option>
+            <option value="19">19   Intelligent Plastic Shirt  $84.37   box</option>
+            <option value="20">20   Practical Rubber Gloves $28.86   box</option>
+            <option value="21">21   Gorgeous Wooden Table   $70.54   box</option>
+            <option value="22">22   Awesome Cotton Shirt $46.54   box</option>
+            <option value="23">23   Small Rubber Shoes   $39.76   box</option>
+            <option value="24">24   Practical Cotton Chair  $26.8 box</option>
+            <option value="25">25   Awesome Steel Gloves $45.41   box</option>
+            <option value="26">26   Intelligent Plastic Table  $99.16   box</option>
+            <option value="27">27   Incredible Plastic Shoes   $66.93   box</option>
+            <option value="28">28   Small Cotton Gloves  $87.51   box</option>
+            <option value="29">29   Small Cotton Table   $9.2  box</option>
+            <option value="30">30   Gorgeous Plastic Chair  $10.38   box</option>
+            <option value="31">31   Practical Steel Hat  $21.05   box</option>
+            <option value="32">32   Small Wooden Car  $8.34 box</option>
+            <option value="33">33   Rustic Granite Shoes $21.39   box</option>
+            <option value="34">34   Awesome Rubber Gloves   $38.93   box</option>
+            <option value="35">35   Sleek Rubber Car  $90.6 box</option>
+            <option value="36">36   Awesome Plastic Gloves  $10.04   box</option>
+            <option value="37">37   Fantastic Rubber Car $20.95   box</option>
+            <option value="38">38   Fantastic Granite Shoes $83.51   box</option>
+            <option value="39">39   Small Granite Hat $89.93   box</option>
+            <option value="40">40   Gorgeous Concrete Computer $58.97   box</option>
+            <option value="41">41   Gorgeous Steel Shoes $35.56   box</option>
+            <option value="42">42   Practical Granite Table $47.86   box</option>
+            <option value="43">43   Gorgeous Steel Computer $86.03   box</option>
+            <option value="44">44   Ergonomic Concrete Shirt   $44.94   box</option>
+            <option value="45">45   Ergonomic Rubber Shirt  $28.32   box</option>
+            <option value="46">46   Sleek Granite Computer  $73.44   box</option>
+            <option value="47">47   Gorgeous Steel Gloves   $74.39   box</option>
+            <option value="48">48   Practical Plastic Hat   $1.44 box</option>
+            <option value="49">49   Sleek Wooden Computer   $93.52   box</option>
+            <option value="50">50   Incredible Cotton Hat   $14.71   box</option>
+            <option value="51">51   Small Plastic Shirt  $40.46   box</option>
+            <option value="52">52   Sleek Granite Shoes  $52.07   box</option>
+            <option value="53">53   Awesome Steel Gloves $79.81   box</option>
+            <option value="54">54   Sleek Plastic Chair  $19.14   box</option>
+            <option value="55">55   Incredible Wooden Car   $26.02   box</option>
+            <option value="56">56   Practical Steel Gloves  $68.11   box</option>
+            <option value="57">57   Practical Concrete Computer   $0.75 box</option>
+            <option value="58">58   Awesome Concrete Table  $66.33   box</option>
+            <option value="59">59   Rustic Wooden Shirt  $9.65 box</option>
+            <option value="60">60   Small Cotton Table   $75.94   box</option>
+            <option value="61">61   Ergonomic Cotton Chair  $63.21   box</option>
+            <option value="62">62   Ergonomic Granite Shirt $3.95 box</option>
+            <option value="63">63   Incredible Concrete Table  $46.85   box</option>
+            <option value="64">64   Sleek Granite Computer  $44.65   box</option>
+            <option value="65">65   Awesome Steel Gloves $78.59   box</option>
+            <option value="66">66   Practical Wooden Table  $44.9 box</option>
+            <option value="67">67   Small Rubber Shoes   $80.04   box</option>
+            <option value="68">68   Fantastic Rubber Chair  $49.7 box</option>
+            <option value="69">69   Rustic Wooden Shoes  $76.27   box</option>
+            <option value="70">70   Awesome Rubber Shirt $38.36   box</option>
+            <option value="71">71   Small Steel Hat   $94.34   box</option>
+            <option value="72">72   Incredible Wooden Shirt $49.93   box</option>
+            <option value="73">73   Gorgeous Steel Shirt $14.87   box</option>
+            <option value="74">74   Awesome Granite Chair   $88.62   box</option>
+            <option value="75">75   Fantastic Cotton Gloves $68.58   box</option>
+            <option value="76">76   Awesome Steel Computer  $1.2  box</option>
+            <option value="77">77   Gorgeous Plastic Computer  $79.95   box</option>
+            <option value="78">78   Ergonomic Cotton Pants  $18.11   box</option>
+            <option value="79">79   Sleek Granite Shirt  $65.91   box</option>
+            <option value="80">80   Intelligent Plastic Chair  $30.2 box</option>
+            <option value="81">81   Fantastic Granite Shoes $46.38   box</option>
+            <option value="82">82   Gorgeous Concrete Hat   $63.87   box</option>
+            <option value="83">83   Awesome Plastic Table   $27.7 box</option>
+            <option value="84">84   Practical Steel Shoes   $71.1 box</option>
+            <option value="85">85   Ergonomic Concrete Car  $53.32   box</option>
+            <option value="86">86   Fantastic Plastic Pants $66.34   box</option>
+            <option value="87">87   Sleek Wooden Table   $23.45   box</option>
+            <option value="88">88   Fantastic Plastic Car   $83.53   box</option>
+            <option value="89">89   Gorgeous Rubber Hat  $92.86   box</option>
+            <option value="90">90   Ergonomic Steel Chair   $71.31   box</option>
+            <option value="91">91   Ergonomic Steel Gloves  $74.57   box</option>
+            <option value="92">92   Fantastic Concrete Chair   $39.49   box</option>
+            <option value="93">93   Ergonomic Wooden Table  $96.51   box</option>
+            <option value="94">94   Fantastic Wooden Shirt  $97.03   box</option>
+            <option value="95">95   Small Plastic Shoes  $76.65   box</option>
+            <option value="96">96   Small Rubber Car  $29.63   box</option>
+            <option value="97">97   Gorgeous Cotton Shirt   $42.04   box</option>
+            <option value="98">98   Intelligent Cotton Shoes   $20.88   box</option>
+            <option value="99">99   Practical Cotton Pants  $36.84   box</option>
+         </select>
+      </div>
+   </div>
+   <div class="col-sm-1"><button type="button" id="remove" class="btn btn-danger btn-block" style="font-size: 1.25em">-</button></div>
+   <div class="col-md-1"><button type="button" id="add" class="btn btn-info btn-block" style="font-size: 1.25em">+</button></div>
+</div>
+      <script>
+      $('#order_line_id').selectize({
+         create: true,
+         sortField: {
+            field: 'text',
+            direction: 'asc'
+         },
+         dropdownParent: 'body'
+      });
+      </script>
+
+<div class="row">
+   <div class="col-md-10"><hr></div>
+</div>
+
+<div class="row">
+   <div class="col-md-2 col-md-offset-5 text-right">Subtotal:</div><div class="col-md-2 col-md-offset-0"></div>
+</div>
+<div class="row">
+   <div class="col-md-2 col-md-offset-5 text-right">(10%) Sales tax:</div><div class="col-md-2 col-md-offset-0"></div>
+</div>
+<div class="row">
+   <div class="col-md-2 col-md-offset-5 text-right">Grand total:</div><div class="col-md-2 col-md-offset-0"></div>
+</div>
+
+<div class="row">
+  <br><br>
+</div>
+
+<div class="row">
+ <div class="col-md-4 col-md-offset-2">
+   <%= f.submit "Cancel", class: "btn btn-danger" %>
+ </div>
+ <div class="col-md-4 col-md-offset-0">
+     <button type="button" id="submitBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Submit Sales Order</button>
+ </div>
+</div>
+
+<!-- confirmaiton modal starts here -->
+
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Does everything look right?</h4>
+         </div>
+         <div class="modal-body">
+            <p>
+              <strong>Shipping Adress:</strong>
+              <span id="shipping_street_address"></span>, <span id="shipping_city"></span>, <span id="shipping_state"></span> <span id="shipping_zipcode"></span>
+            </p>
+
+            <p>
+              <strong>Billing Adress:</strong>
+              <span id="billing_street_add"></span>, <span id="billing_city"></span>, <span id="billing_state"></span> <span id="billing_zipcode"></span>
+            </p>
+            <br>
+            <p>
+              <strong>Card Name:</strong>
+              <span id="cc_fname"></span> <span id="cc_middle_initial"></span> <span id="cc_lname"></span>
+            </p>
+
+            <p>
+              <strong>Card Number:</strong>
+              <span id="cc_number"</span>
+            </p>
+
+            <p>
+              <strong>Security code:</strong>
+              <span id="cc_security_code"</span>
+            </p>
+
+            <p>
+              <strong>Expiration:</strong>
+              <span id="cc_exp_month"></span>/<span id="cc_exp_year"></span>
+            </p>
+         </div>
+         <div class="modal-footer" style="border: none">
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            <button class="btn btn-success">Yes</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<% end %>

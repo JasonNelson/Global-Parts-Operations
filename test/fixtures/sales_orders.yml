@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  billing_street_add: MyString
+  billing_city: MyString
+  billing_state: MyString
+  billing_zipcode: MyString
+  shipping_street_address: MyString
+  shipping_city: MyString
+  shipping_state: MyString
+  shipping_zipcode: MyString
+  cc_fname: MyString
+  cc_middle_initial: MyString
+  cc_lname: MyString
+  cc_number: MyString
+  cc_security_code: MyString
+  cc_exp_month: MyString
+  cc_exp_year: MyString
+  subtotal: 9.99
+  tax_percent: 1
+  shipping_fee: 9.99
+  total: 9.99
+  customer_account_id: 
+  order_status_id: 
+
+two:
+  billing_street_add: MyString
+  billing_city: MyString
+  billing_state: MyString
+  billing_zipcode: MyString
+  shipping_street_address: MyString
+  shipping_city: MyString
+  shipping_state: MyString
+  shipping_zipcode: MyString
+  cc_fname: MyString
+  cc_middle_initial: MyString
+  cc_lname: MyString
+  cc_number: MyString
+  cc_security_code: MyString
+  cc_exp_month: MyString
+  cc_exp_year: MyString
+  subtotal: 9.99
+  tax_percent: 1
+  shipping_fee: 9.99
+  total: 9.99
+  customer_account_id: 
+  order_status_id: 

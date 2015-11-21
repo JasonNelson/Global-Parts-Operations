@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sales_order_id: 
+  customer_account_id: 
+  ship_date: MyString
+  ship_time: MyString
+  expected_delivery_date: MyString
+  carrier: MyString
+  method: MyString
+  tracking_num: 1
+  shipped_by: MyString
+
+two:
+  sales_order_id: 
+  customer_account_id: 
+  ship_date: MyString
+  ship_time: MyString
+  expected_delivery_date: MyString
+  carrier: MyString
+  method: MyString
+  tracking_num: 1
+  shipped_by: MyString

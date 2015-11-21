@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @inventory_item.barcode %>
+</p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @inventory_item.product_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @inventory_item.description %>
+</p>
+
+<p>
+  <strong>Selling price:</strong>
+  <%= @inventory_item.selling_price %>
+</p>
+
+<p>
+  <strong>Unit of measure:</strong>
+  <%= @inventory_item.unit_of_measure %>
+</p>
+
+<p>
+  <strong>Qty on hand:</strong>
+  <%= @inventory_item.qty_on_hand %>
+</p>
+
+<p>
+  <strong>Location aisle:</strong>
+  <%= @inventory_item.location_aisle %>
+</p>
+
+<p>
+  <strong>Location area:</strong>
+  <%= @inventory_item.location_area %>
+</p>
+
+<%= link_to 'Edit', edit_inventory_item_path(@inventory_item) %> |
+<%= link_to 'Back', inventory_items_path %>

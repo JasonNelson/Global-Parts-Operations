@@ -1,0 +1,150 @@
+
+
+<%= form_for(@customer_account) do |f| %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= render 'shared/error_messages', object: f.object %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :fname, "First Name*" %>
+        <%= f.text_field :fname, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 col-sm-offset-0">
+        <%= f.label :middle_initial, "Middle Initial" %>
+        <%= f.text_field :middle_initial, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 col-md-offset-0">
+        <%= f.label :lname, "Last Name*" %>
+        <%= f.text_field :lname, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 col-md-offset-0">* required field
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <%= f.label :street_add, "Street Address*" %>
+        <%= f.text_field :street_add, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :city, "City*" %>
+        <%= f.text_field :city, class: 'form-control' %>
+    </div>  
+    <div class="col-md-3 col-md-offset-0">
+        <div class="form-group">
+          <%= f.label :state, "State*" %>
+          <%= f.select(:state, options_for_select(["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District Of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]), {}, {class: "form-control"}) %>
+        </div>
+    </div>
+    <div class="col-md-2 col-md-offset-0">
+        <%= f.label :zipcode, "Zip Code*" %>
+        <%= f.text_field :zipcode, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        <%= f.label :home_phone, "Home Phone" %>
+        <%= f.text_field :home_phone, class: 'form-control' %>
+    </div>
+    <div class="col-md-3 col-md-offset-0">      
+        <%= f.label :cell_phone, "Cell Phone*" %>
+        <%= f.text_field :cell_phone, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 col-md-offset-0">   
+      <div class="form-group">
+        <%= f.label :phone_pref, "Preferred Phone*" %>
+        <%= f.select(:phone_pref, options_for_select(["Home phone", "Cell Phone"]), {}, {class: "form-control"}) %>
+      </div>
+    </div>
+  </div>
+      
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <br><br>
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+        <%= f.label :email, "Email*"%>
+        <%= f.email_field :email, class: 'form-control' %>
+    </div>
+    <div class="col-md-4 col-md-offset-0">
+        <%= f.label :email_confirmation, "Email confirmation*" %>
+        <%= f.email_field :email_confirmation, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+        <%= f.label :password, "Password*" %>
+        <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="col-md-4 col-md-offset-0">
+        <%= f.label :password_confirmation, "Password Confirmation*" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+    <div class="col-md-4 col-md-offset-2">
+        <%= f.submit "Cancel", class: "btn btn-danger" %>
+    </div>
+    <div class="col-md-4 col-md-offset-0">
+        <button type="button" id="submitBtn" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Create my account</button>
+    </div>
+
+<!-- confirmaiton modal starts here -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Does everything look right?</h4>
+        </div>
+        <div class="modal-body">
+            <p>
+              <strong>Name:</strong>
+              <span id="fname"></span> <span id="middle_initial"></span> <span id="lname"></span>
+            </p>
+
+            <p>
+              <strong>Adress:</strong>
+              <span id="street_add"></span>, <span id="city"></span>, <span id="state"></span> <span id="zipcode"></span>
+            </p>
+
+            <p>
+              <strong>Email:</strong>
+              <span id="email"</span>
+            </p>
+
+            <p>
+              <strong>Home phone:</strong>
+              <span id="home_phone"</span>
+            </p>
+
+            <p>
+              <strong>Cell phone:</strong>
+              <span id="cell_phone"</span>
+            </p>
+
+            <p>
+              <strong>Phone preference:</strong>
+              <span id="phone_pref"</span>
+            </p>
+         </div>
+        <div class="modal-footer" style="border: none">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button class="btn btn-success">Yes</button>
+        </div>
+      </div>
+    </div>
+
+   </div>
+  </div>
+
+<% end %>

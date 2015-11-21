@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Inventory Items</h1>
+
+<table class="table table-striped table-condensed" >
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Barcode</th>
+      <th>Product name</th>
+      <th>Description</th>
+      <th>Selling price</th>
+      <th>Unit of measure</th>
+      <th>Qty on hand</th>
+      <th>Location aisle</th>
+      <th>Location area</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventory_items.each do |inventory_item| %>
+      <tr>
+        <td><%= inventory_item.id %></td>
+        <td><%= inventory_item.barcode %></td>
+        <td><%= inventory_item.product_name %></td>
+        <td><%= inventory_item.description %></td>
+        <td><%= inventory_item.selling_price %></td>
+        <td><%= inventory_item.unit_of_measure %></td>
+        <td><%= inventory_item.qty_on_hand %></td>
+        <td><%= inventory_item.location_aisle %></td>
+        <td><%= inventory_item.location_area %></td>
+        <td><%= link_to 'Show', inventory_item %></td>
+        <td><%= link_to 'Edit', edit_inventory_item_path(inventory_item) %></td>
+        <td><%= link_to 'Destroy', inventory_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inventory item', new_inventory_item_path %>

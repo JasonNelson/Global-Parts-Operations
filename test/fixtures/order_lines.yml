@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qty_ordered: 1
+  unit_price: 9.99
+  total_price: 9.99
+  sales_order_id: 
+  inventory_item_id: 
+
+two:
+  qty_ordered: 1
+  unit_price: 9.99
+  total_price: 9.99
+  sales_order_id: 
+  inventory_item_id: 
