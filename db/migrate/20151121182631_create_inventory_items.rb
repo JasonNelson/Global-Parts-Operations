@@ -1,4 +1,4 @@
-class CreateInventoryItems < ActiveRecord::Migration
+class CreateInventoryItems < ActiveRecord::Migration[4.2]
   def change
     create_table :inventory_items do |t|
       t.integer :barcode

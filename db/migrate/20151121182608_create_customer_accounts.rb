@@ -1,4 +1,4 @@
-class CreateCustomerAccounts < ActiveRecord::Migration
+class CreateCustomerAccounts < ActiveRecord::Migration[4.2]
   def change
     create_table :customer_accounts do |t|
       t.string :fname

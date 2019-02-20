@@ -1,0 +1,21 @@
+I")(function() {
+  var ready;
+
+  ready = function() {};
+
+  jQuery(function() {
+    return $('#submitBtn').click(function(evt) {
+      $("#sales_order_id").html($('#so_shipment_sales_order_id').val());
+      $("#carrier").html($('#so_shipment_carrier').val());
+      $("#method").html($('#so_shipment_method').val());
+      $("#tracking_num").html($('#so_shipment_tracking_num').val());
+      return $("#shipped_by").html($('#so_shipment_shipped_by').val());
+    });
+  });
+
+  $(document).ready(ready);
+
+  $(document).on('page:load', ready);
+
+}).call(this);
+:ET

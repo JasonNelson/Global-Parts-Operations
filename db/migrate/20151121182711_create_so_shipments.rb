@@ -1,4 +1,4 @@
-class CreateSoShipments < ActiveRecord::Migration
+class CreateSoShipments < ActiveRecord::Migration[4.2]
   def change
     create_table :so_shipments do |t|
       t.references :sales_order, index: true, foreign_key: true

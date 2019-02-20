@@ -1,4 +1,4 @@
-class CreateSoPickLists < ActiveRecord::Migration
+class CreateSoPickLists < ActiveRecord::Migration[4.2]
   def change
     create_table :so_pick_lists do |t|
       t.references :sales_order, index: true, foreign_key: true

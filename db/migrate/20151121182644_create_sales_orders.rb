@@ -1,4 +1,4 @@
-class CreateSalesOrders < ActiveRecord::Migration
+class CreateSalesOrders < ActiveRecord::Migration[4.2]
   def change
     create_table :sales_orders do |t|
       t.string :billing_street_add
